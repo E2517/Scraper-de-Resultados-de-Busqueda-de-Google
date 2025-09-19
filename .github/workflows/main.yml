@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip3 install --upgrade pip
+          python -m pip install --upgrade pip
           pip3 install pandas openpyxl serpapi
           
       - name: Run script with API key
