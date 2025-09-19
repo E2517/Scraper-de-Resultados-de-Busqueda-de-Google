@@ -23,10 +23,10 @@ Asegúrate de tener instaladas las siguientes bibliotecas de Python:
   - `pandas`
   - `openpyxl`
 
-Puedes instalarlas usando `pip`:
+Puedes instalarlas usando `pip3`:
 
 ```bash
-pip install serpapi pandas openpyxl
+pip3 install serpapi pandas openpyxl
 ```
 
 -----
@@ -46,7 +46,7 @@ pip install serpapi pandas openpyxl
 4.  **Ejecuta el Script:** Abre una terminal en el directorio del proyecto y ejecuta el script:
 
     ```bash
-    python tu_script_nombre.py
+    python3 tu_script_nombre.py
     ```
 
 5.  **Revisa los Resultados:** Después de la ejecución, se creará un archivo llamado `resultados_busqueda.xlsx` en el mismo directorio con todos los datos extraídos.
@@ -84,10 +84,10 @@ Make sure you have the following Python libraries installed:
   - `pandas`
   - `openpyxl`
 
-You can install them using `pip`:
+You can install them using `pip3`:
 
 ```bash
-pip install serpapi pandas openpyxl
+pip3 install serpapi pandas openpyxl
 ```
 
 -----
@@ -107,7 +107,7 @@ pip install serpapi pandas openpyxl
 4.  **Run the Script:** Open a terminal in the project directory and run the script:
 
     ```bash
-    python your_script_name.py
+    python3 your_script_name.py
     ```
 
 5.  **Check the Results:** After execution, a file named `resultados_busqueda.xlsx` will be created in the same directory with all the extracted data.
