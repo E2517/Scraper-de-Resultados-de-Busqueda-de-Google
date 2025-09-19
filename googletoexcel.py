@@ -1,5 +1,4 @@
-# from serpapi import GoogleSearch
-from serpapi.google_search import GoogleSearch
+from serpapi import GoogleSearch
 import pandas as pd
 from urllib.parse import urlparse
 
@@ -11,7 +10,7 @@ palabras_clave = [
     "Penalista Murcia",
     "Carlos CR Abogogado Penalista"
 ]
-clave_api = os.getenv("SERPAPI_API_KEY") # Reemplaza con tu clave de API '' o SECRETS GITHUB
+clave_api = '' # Reemplaza con tu clave de API '' o SECRETS GITHUB
 
 # Lista para almacenar todos los resultados
 todos_los_resultados = []
