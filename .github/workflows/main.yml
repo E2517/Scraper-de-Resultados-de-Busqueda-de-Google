@@ -2,10 +2,10 @@ name: Run Python Script
 
 on:
   workflow_dispatch:
-  
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,14 +18,17 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.12'  # Try a more stable version
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas openpyxl serpapi
+          pip install --upgrade pandas openpyxl serpapi
           
+      - name: Check serpapi version
+        run: pip show serpapi
+
       - name: Run script with API key
         env:
           SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
-        run: python googletoexcel.py
+        run: python3 googletoexcel.py
