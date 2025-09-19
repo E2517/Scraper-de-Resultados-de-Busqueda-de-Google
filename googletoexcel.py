@@ -1,7 +1,6 @@
-import os
+from serpapi import GoogleSearch
 import pandas as pd
 from urllib.parse import urlparse
-from serpapi.google_search import GoogleSearch
 
 # Define la lista de palabras clave y la clave de la API
 palabras_clave = [
@@ -11,14 +10,7 @@ palabras_clave = [
     "Penalista Murcia",
     "Carlos CR Abogogado Penalista"
 ]
-
-# Lee la clave de API de la variable de entorno
-clave_api = os.getenv("SERPAPI_API_KEY")
-
-# Verifica si la clave de la API está configurada
-if not clave_api:
-    print("La clave de API no está configurada. Por favor, configura el secreto 'SERPAPI_API_KEY' en GitHub.")
-    exit()
+clave_api = os.getenv("SERPAPI_API_KEY") # Reemplaza con tu clave de API '' o SECRETS GITHUB
 
 # Lista para almacenar todos los resultados
 todos_los_resultados = []
@@ -34,30 +26,27 @@ for palabra_clave in palabras_clave:
     }
 
     # Realiza la búsqueda
-    try:
-        busqueda = GoogleSearch(parametros)
-        resultados = busqueda.get_dict()
+    busqueda = GoogleSearch(parametros)
+    resultados = busqueda.get_dict()
 
-        # Extrae los dominios y los guarda
-        if "organic_results" in resultados:
-            for resultado in resultados["organic_results"]:
-                if "link" in resultado:
-                    link = resultado["link"]
-                    dominio = urlparse(link).netloc
+    # Extrae los dominios y los guarda
+    if "organic_results" in resultados:
+        for resultado in resultados["organic_results"]:
+            if "link" in resultado:
+                link = resultado["link"]
+                dominio = urlparse(link).netloc
 
-                    # Crea un diccionario con los datos
-                    diccionario_resultado = {
-                        "Palabra Clave": palabra_clave,
-                        "Dominio": dominio,
-                        "Título": resultado.get("title", "No disponible"),
-                        "Posición": resultado.get("position", "No disponible")
-                    }
-                    todos_los_resultados.append(diccionario_resultado)
-        else:
-            print(f"No se encontraron resultados orgánicos para '{palabra_clave}'.")
-    except Exception as e:
-        print(f"Error en la búsqueda para '{palabra_clave}': {e}")
-        
+                # Crea un diccionario con los datos
+                diccionario_resultado = {
+                    "Palabra Clave": palabra_clave,
+                    "Dominio": dominio,
+                    "Título": resultado.get("title", "No disponible"),
+                    "Posición": resultado.get("position", "No disponible")
+                }
+                todos_los_resultados.append(diccionario_resultado)
+    else:
+        print(f"No se encontraron resultados orgánicos para '{palabra_clave}'.")
+
 # Convierte la lista de diccionarios a un DataFrame de pandas
 df = pd.DataFrame(todos_los_resultados)
 
