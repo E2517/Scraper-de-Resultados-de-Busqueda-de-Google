@@ -8,7 +8,7 @@ palabras_clave = [
     "Penalista Murcia",
     "Carlos CR Abogogado Penalista"
 ]
-clave_api = ""  # Reemplaza con tu clave de API
+clave_api = os.getenv("SERPAPI_API_KEY") # Reemplaza con tu clave de API '' o SECRETS GITHUB
 
 # Itera sobre cada palabra clave en la lista
 for palabra_clave in palabras_clave:

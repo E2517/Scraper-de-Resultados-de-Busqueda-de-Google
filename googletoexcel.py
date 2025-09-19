@@ -10,7 +10,7 @@ palabras_clave = [
     "Penalista Murcia",
     "Carlos CR Abogogado Penalista"
 ]
-clave_api = ""  # Reemplaza con tu clave de API
+clave_api = os.getenv("SERPAPI_API_KEY") # Reemplaza con tu clave de API '' o SECRETS GITHUB
 
 # Lista para almacenar todos los resultados
 todos_los_resultados = []
