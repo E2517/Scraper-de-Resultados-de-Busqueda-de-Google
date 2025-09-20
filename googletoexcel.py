@@ -3,9 +3,6 @@ import pandas as pd
 import os
 from urllib.parse import urlparse
 
-# Secrets Serpapi Github Action
-secret_api = os.getenv("secrets.SERPAPI_API_KEY")
-
 # Define la lista de palabras clave y la clave de la API
 palabras_clave = [
     "Los Mejores Abogados Penalistas Murcia",
@@ -14,7 +11,7 @@ palabras_clave = [
     "Penalista Murcia",
     "Carlos CR Abogogado Penalista"
 ]
-clave_api = secret_api # Reemplaza con tu clave de API '' o SECRETS GITHUB
+clave_api = os.getenv("secrets.SERPAPI_API_KEY") # Reemplaza con tu clave de API '' o SECRETS GITHUB
 
 # Lista para almacenar todos los resultados
 todos_los_resultados = []
