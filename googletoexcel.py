@@ -1,8 +1,8 @@
-#from serpapi import GoogleSearch
-from serpapi.google_search import GoogleSearch
+# from serpapi.google_search import GoogleSearch # Para ejecutar Github Actions descomentalo
+# import os # Para llamar a secret de Github descomentalo
 
+from serpapi import GoogleSearch
 import pandas as pd
-import os
 from urllib.parse import urlparse
 
 # Define la lista de palabras clave y la clave de la API
@@ -11,9 +11,11 @@ palabras_clave = [
     "Abogado Penalista Murcia",
     "Los 10 Mejores Abogados Penalistas Murcia",
     "Penalista Murcia",
-    "Carlos CR Abogogado Penalista"
+    "Carlos CR Abogado Penalista"
 ]
-clave_api = os.getenv("secrets.SERPAPI_API_KEY") # Reemplaza con tu clave de API '' o SECRETS GITHUB
+
+#clave_api = os.getenv("secrets.SERPAPI_API_KEY") # SECRETS GITHUB
+clave_api = '' # Reemplaza con tu clave de API ''
 
 # Lista para almacenar todos los resultados
 todos_los_resultados = []
@@ -41,10 +43,9 @@ for palabra_clave in palabras_clave:
 
                 # Crea un diccionario con los datos
                 diccionario_resultado = {
+                    "Posición": resultado.get("position", "No disponible"),
                     "Palabra Clave": palabra_clave,
-                    "Dominio": dominio,
-                    "Título": resultado.get("title", "No disponible"),
-                    "Posición": resultado.get("position", "No disponible")
+                    "Dominio": dominio                    
                 }
                 todos_los_resultados.append(diccionario_resultado)
     else:
@@ -59,3 +60,4 @@ try:
     print("\n✅ Los resultados se han guardado con éxito en 'resultados_busqueda.xlsx'")
 except Exception as e:
     print(f"\n❌ Error al guardar el archivo: {e}")
+
