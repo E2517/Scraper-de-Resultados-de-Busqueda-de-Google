@@ -23,7 +23,7 @@ jobs:
 
     - name: Ejecutar script
       env:
-        SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        SERPAPI_KEY: ${{ secrets.SERPAPI_API_KEY }}
       run: python3 script.py
 
     - name: Subir archivo de resultados
