@@ -29,5 +29,5 @@ jobs:
     - name: Subir archivo de resultados
       uses: actions/upload-artifact@v3
       with:
-        name: resultados_excel
+        name: Resultados_excel
         path: resultados_busqueda.xlsx
