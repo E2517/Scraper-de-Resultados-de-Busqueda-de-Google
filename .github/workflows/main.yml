@@ -1,34 +1,33 @@
-name: Run Python Script
+name: Ejecutar búsqueda con SerpAPI
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
-  build:
+  ejecutar-script:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write 
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.12'  # Try a more stable version
+    - name: Clonar repositorio
+      uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install --upgrade pandas openpyxl serpapi
-          
-      - name: Check serpapi version
-        run: pip show serpapi
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
 
-      - name: Run script with API key
-        env:
-          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
-        run: python3 google.py
+    - name: Instalar dependencias
+      run: |
+        python3 -m pip install --upgrade pip
+        pip3 install -r requirements.txt
+
+    - name: Ejecutar script
+      env:
+        SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+      run: python3 script.py
+
+    - name: Subir archivo de resultados
+      uses: actions/upload-artifact@v3
+      with:
+        name: resultados_excel
+        path: resultados_busqueda.xlsx
