@@ -1,4 +1,6 @@
-from serpapi import GoogleSearch
+#from serpapi import GoogleSearch
+from serpapi.google_search import GoogleSearch
+
 import pandas as pd
 import os
 from urllib.parse import urlparse
