@@ -19,7 +19,7 @@ jobs:
     - name: Instalar dependencias
       run: |
         python3 -m pip install --upgrade pip
-        pip3 install serpapi pandas google-search-results
+        pip3 install serpapi pandas google-search-results openpyxl
 
     - name: Ejecutar script
       env:
