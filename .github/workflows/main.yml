@@ -27,7 +27,7 @@ jobs:
       run: python3 googletoexcel.py
 
     - name: Subir archivo de resultados
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Resultados_excel
         path: resultados_busqueda.xlsx
