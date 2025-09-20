@@ -24,7 +24,7 @@ jobs:
     - name: Ejecutar script
       env:
         SERPAPI_KEY: ${{ secrets.SERPAPI_API_KEY }}
-      run: python3 script.py
+      run: python3 googletoexcel.py
 
     - name: Subir archivo de resultados
       uses: actions/upload-artifact@v3
